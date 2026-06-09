@@ -450,15 +450,15 @@ export default function LevaPanel({ config, onChange, onScreenshot, onDownload, 
           {/* ── Exports ── */}
           <Folder label="exports" isOpen={openFolder === 'exports'} onToggle={() => toggleFolder('exports')}>
             <div className="lv-exports">
-              {onExportConfig && (
+              {/* {onExportConfig && (
                 <button className="lv-export-btn" onClick={onExportConfig}>copy to clipboard</button>
-              )}
+              )} */}
               {onDownload && (
                 <button className="lv-export-btn" onClick={onDownload}>download zip</button>
               )}
-              {onScreenshot && (
+              {/* {onScreenshot && (
                 <button className="lv-export-btn" onClick={onScreenshot}>download image</button>
-              )}
+              )} */}
             </div>
           </Folder>
         </div>
