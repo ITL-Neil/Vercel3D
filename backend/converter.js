@@ -108,8 +108,15 @@ function runGltfTransform(args, timeout = 120000) {
 }
 
 function getGltfCmd() {
+  // 1. Windows: globally npm-installed .cmd
   const localAppData = process.env.LOCALAPPDATA || '';
   const cmdPath = path.join(localAppData, 'npm', 'gltf-transform.cmd');
   if (fs.existsSync(cmdPath)) return cmdPath;
+
+  // 2. Local node_modules/.bin (Linux/macOS/Render)
+  const localBin = path.join(process.cwd(), 'node_modules', '.bin', 'gltf-transform');
+  if (fs.existsSync(localBin)) return localBin;
+
+  // 3. Fallback: system PATH
   return 'gltf-transform';
 }

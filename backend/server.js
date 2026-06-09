@@ -19,8 +19,12 @@ const TEMP_DIR = path.join(os.tmpdir(), 'glb-compress-api');
 
 const app = express();
 
+const corsOrigin = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map(s => s.trim())
+  : ['http://localhost:5173', 'http://127.0.0.1:5173'];
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: corsOrigin,
   exposedHeaders: ['Content-Disposition', 'X-Original-Size', 'X-Compressed-Size', 'X-Compression-Ratio'],
 }));
 
