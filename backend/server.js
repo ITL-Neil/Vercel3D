@@ -82,7 +82,7 @@ app.post('/api/compress', upload.single('file'), async (req, res) => {
     }
 
     console.error(`[Server] Starting compression: ${glbPath}`);
-    const result = await compressGlb(glbPath, TEMP_DIR, originalBaseName);
+    const result = await compressGlb(glbPath, TEMP_DIR, originalBaseName, { compressTextureToWebP: false });
     outputPath = result.outputPath;
     console.error(`[Server] Compression complete: ${result.compressionRatio}%`);
 
